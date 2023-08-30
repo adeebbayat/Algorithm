@@ -40,7 +40,6 @@ function encodeStr(str) {
     let encodedArr = [];
 
     str = str.split('').sort();
-    console.log(str)
     for (i = 0; i < str.length; i++) {
         if (encodedArr.includes(str[i]) == false) {
             encodedArr.push(str[i]);
