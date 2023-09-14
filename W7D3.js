@@ -33,7 +33,7 @@ function dedupeSorted(nums) {
 }
 return temp
 }
-console.log(dedupeSorted(nums1))
-console.log(dedupeSorted(nums2))
-console.log(dedupeSorted(nums3))
-console.log(dedupeSorted(nums4))
+console.log(dedupeSorted(nums1) + " should be " + expected1)
+console.log(dedupeSorted(nums2) + " should be " + expected2)
+console.log(dedupeSorted(nums3) + " should be " + expected3)
+console.log(dedupeSorted(nums4) + " should be " + expected4)
