@@ -22,13 +22,13 @@ output = [
 
 const consecutiveArrays = (arr,k) => {
     //Initialize Array of Arrays
-    const outsideArray = []
+    var outsideArray = []
     for (var i = 0; i < arr.length; i++){
         //Initialize Inside Array
         let insideArray = []
         let insideArraySum = 0
         let j = i
-        while(insideArraySum < 16){
+        while(insideArraySum < k){
             //Push one index of arr at a time to insideArray and check sum, repeat
             insideArray.push(arr[j])
             insideArraySum += arr[j]
@@ -39,7 +39,7 @@ const consecutiveArrays = (arr,k) => {
             if (insideArraySum == 16){
                 
                 while(arr[j] == 0){
-                    Array.freeze(outsideArray.push(insideArray))
+                    outsideArray.push([...insideArray])
                     insideArray.push(arr[j])
                     j++
                 }
