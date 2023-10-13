@@ -77,6 +77,7 @@ function findByIdAndUpdate(id, updatedValues, collection) {
 
 
 
+
 console.log(findByIdAndUpdate(3, { redBeltStatus: true }, students));
 console.log(findByIdAndUpdate(1, { isLateToday: true, lateCount: 16, randomKey: "randomValue" }, students));
 console.log(findByIdAndUpdate(5, {}, students));
