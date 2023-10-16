@@ -1,44 +1,38 @@
-/* https://leetcode.com/problems/two-sum/
+const str1 = "b70a164c32a20c10";
+const expected1 = "a184b70c42";
 
-    Given an array of integers, return indices of the
-    two numbers such that they add up to a specific target.
+// 1. DRIVER 🚗
+// 2. PRESENTER 👨‍🏫
+// 3. NAVIGATOR 🧭
 
-    You may assume that each input would have EXACTLY ONE SOLUTION,
-    and you may not use the same element twice.
+function rehash(str) {
+    const hashmap = {};
+    let num = "";
+    let letter = str[0];
+    let repeat = false;
+    for (let i = 0; i < str.length; i++) {
+        if (!isNaN(str[i])) {
+            num += str[i];
+            if(i === str.length-1){
+                hashmap[letter] = hashmap[letter] += parseInt(num)
+            }
+        } else if (isNaN(str[i])) {
+            if(hashmap.hasOwnProperty(str[i])){
+                repeat = true
+            }
+            if(repeat === false){
+                hashmap[letter] = parseInt(num)
+            }
+            else if (repeat === true){
+                hashmap[letter] = hashmap[letter] += parseInt(num)
+            }
+            repeat = false
+            letter = str[i]
+            num = ""
+        }
 
-    the array is unsorted, contains no floats, and there may be duplicate values
-
-    Given arr = [2, 11, 7, 15], target = 9,
-    Because arr[0] + arr[2] = 2 + 7 = 9
-    return [0, 2].
-
-    example 1
-    given: [2, 11, 7, 15]
-    target: 9
-    output: [0,2]
-
-    example 2
-    given: [3,2,4]
-    target: 6
-    output: [1,2]
-
-    example 3
-    given: [3,3]
-    target: 6
-    output: [0,1]
-*/
-
-function sumArray(arr,target){
-    while (sumTest !== sum){
-        
+        console.log(hashmap)
     }
 }
 
-// R.I.O.T.   Read Input Output Talk
-
-// 1. Driver 🚗
-// 2. Presenter 👩‍💻
-// 3. Navigator 🧭
-
-// 👉  take a few mins to write the pseudocode first
-// create the function and decide what params it needs and what it will return here:
+rehash(str1);
