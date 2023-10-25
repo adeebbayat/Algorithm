@@ -22,7 +22,7 @@ class Stack {
      * @returns {number} The new length of this stack.
      */
     push(item) {
-        this.items.push(item)
+        return this.items.push(item)
     }
 
     /**
@@ -42,7 +42,7 @@ class Stack {
      * @returns {any} The top / last item of this stack.
      */
     peek() {
-        return this.items.peek()
+        return this.items[this.items.length-1]
     }
 
     /**
@@ -52,7 +52,7 @@ class Stack {
      * @returns {boolean}
      */
     isEmpty() {
-        return this.items.isEmpty()
+        return isEmpty(this.items)
     }
 
     /**
@@ -62,7 +62,7 @@ class Stack {
      * @returns {number} The length.
      */
     size() {
-        return this.items.size()
+        return this.items.length
     }
 }
 
