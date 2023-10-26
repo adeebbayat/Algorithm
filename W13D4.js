@@ -1,4 +1,3 @@
-const { Stack } = require("../Stack");
 
 /**
  * Class to represent a queue using an array which follows a FIFO
@@ -95,25 +94,49 @@ class Queue {
      *    in the same order.
      */
     compareQueues(q2) {
-        if (this.size() !== q2.size()) {
-            return false;
+
+        // Edge case different lengths
+        if(this.size() !== q2.size()){
+            return false
         }
-        let count = 0;
+        // Initialize isEqual and counter variables
         let isEqual = true;
-        const len = this.size();
+        let counter = 0;
 
-        while (count < len) {
-            const dequeued1 = this.dequeue();
-            const dequeued2 = q2.dequeue();
+        // While loop
+        while(!this.isEmpty() && !q2.isEmpty()){
 
-            if (dequeued1 !== dequeued2) {
-                isEqual = false;
+            // Remove and compare first index of each array
+            const item1 = this.dequeue();
+            const item2 = q2.dequeue();
+
+            // Check if first index same
+            if(item1 != item2){
+                return false
             }
 
-            this.enqueue(dequeued1);
-            q2.enqueue(dequeued2);
-            count++;
+            // Put first index back onto end of array
+            this.enqueue(item1);
+            q2.enqueue(item2);
+
+            // Increment counter
+            counter++;
+            
+            // If counter reaches end of array then return isEqual === true
+            if(counter === this.size()-1){
+                return isEqual
+            }
         }
-        return isEqual;
     }
 }
+
+
+const q1 = new Queue([1,2,3,4]);
+
+const q2 = new Queue([1,2,3,4]);
+const q3 = new Queue([5,3,6,4])
+const q4 = new Queue([5,23,5,12,2,3])
+
+q1.compareQueues(q2).print()
+q1.compareQueues(q3).print()
+q1.compareQueues(q4).print()
