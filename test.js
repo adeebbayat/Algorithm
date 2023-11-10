@@ -1,19 +1,29 @@
-nums = [3,2,3]
+var isHappy = function(n) {
+    let isHappy = undefined, latestN = n;
+    const squaredSet = new Set();
 
-var majorityElement = function(nums) {
-    hashMap = {};
-    for(let i = 0; i < nums.length; i++){
-        if(!hashMap.hasOwnProperty(nums[i])){
-            hashMap[nums[i]] = 1
-        } else if (hashMap.hasOwnProperty(nums[i])){
-            hashMap[nums[i]] += 1
+    while(isHappy === undefined) {
+        let squaredNumsSum = 0;
+        const squaredNums = latestN.toString().split("").map(num => num * num);
+
+        for (let i = 0; i < squaredNums.length; i++) {
+            squaredNumsSum += squaredNums[i];
         }
-    }
-    console.log(hashMap)
-    let values=Object.values(hashMap)
-    values.sort()
-    return values[0]
 
+        if (squaredNumsSum == 1) {
+            isHappy = true;
+        }
+
+        if (squaredSet.has(squaredNumsSum)) {
+            isHappy = false;
+        } else {
+            squaredSet.add(squaredNumsSum);
+        }
+
+        latestN = squaredNumsSum;
+    }
+
+    return isHappy;
 };
 
-console.log(majorityElement(nums))
+console.log(isHappy(19))

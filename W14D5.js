@@ -457,10 +457,31 @@ class ListNode {
      *    no longer in this list.
      */
     splitOnVal(val) {
-        const newList = new SinglyLinkedList();
         if(this.isEmpty()){
+            return null;
+        }
+
+        if(this.head.data === val){
+            const newList = new SinglyLinkedList();
+            newList.head = this.head.next;
             return newList;
         }
+
+        let runner = this.head;
+        let previous = null;
+
+        while(runner && runner.data !== val) {
+            previous = runner;
+            runner = runner.next;
+        }
+
+        if(runner === null){
+            return null
+        }
+        previous.next = null;
+        const newList = new SinglyLinkedList();
+        newList.head = runner.data;
+        return newList
     }
   
     /**
@@ -469,5 +490,35 @@ class ListNode {
      * - Space: O(1) constant.
      * @returns {any} The data of the middle node or null if there is no middle.
      */
-    getMiddleData() {  }
+    getMiddleData() {
+        if(this.length() % 2 == 0 || this.length() == 0){
+            return null
+        }
+        else{
+            const length = Math.ceil(this.length()/2)
+            let counter = 1
+            let runner = this.head
+            while(counter != length){
+                counter++
+                runner = runner.next
+            }
+            return runner.data
+
+        }
+      }
 }
+
+module.exports = {ListNode,SinglyLinkedList};
+
+const list = new SinglyLinkedList();
+
+list.insertAtBack(2);
+list.insertAtBack(4);
+list.insertAtBack(6);
+list.insertAtBack(8);
+
+
+// const newList = list.splitOnVal(6)
+// console.log(newList)
+// console.log(newList.toArr())
+console.log(list.getMiddleData())
