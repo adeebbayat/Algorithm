@@ -1,29 +1,26 @@
-var isHappy = function(n) {
-    let isHappy = undefined, latestN = n;
-    const squaredSet = new Set();
 
-    while(isHappy === undefined) {
-        let squaredNumsSum = 0;
-        const squaredNums = latestN.toString().split("").map(num => num * num);
+let steps = 8;
+let path = "UDDDUDUU";
 
-        for (let i = 0; i < squaredNums.length; i++) {
-            squaredNumsSum += squaredNums[i];
+function countingValleys(steps, path) {
+    let elevation = 0;
+    let numberOfValleys = 0;
+ 
+    for (let i = 0; i < path.length; i++){
+    
+        if(elevation === -1 && path[i] === "U"){
+            numberOfValleys++
+        }
+        if(path[i] === "D"){
+            elevation--;
+        }
+        if(path[i] === "U"){
+            elevation++;
         }
 
-        if (squaredNumsSum == 1) {
-            isHappy = true;
-        }
-
-        if (squaredSet.has(squaredNumsSum)) {
-            isHappy = false;
-        } else {
-            squaredSet.add(squaredNumsSum);
-        }
-
-        latestN = squaredNumsSum;
     }
+    return numberOfValleys
+}
 
-    return isHappy;
-};
-
-console.log(isHappy(19))
+console.log(countingValleys(steps,path));
+console.log(1)

@@ -471,14 +471,27 @@ class ListNode {
      * - Space: O(1) constant.
      * @returns {any} The data of the middle node or null if there is no middle.
      */
+    
     getMiddleData() {  }
     /**
      * Reverses this list in-place without using any extra lists.
      * - Time: (?).
      * - Space: (?).
-     * @returns {SinglyLinkedList} This list.
-    */
-   reverse() {}
+     * @returns {SinglyLinkedList} This list.**/
+    reverse() {
+        let prev = null;
+        let current = this.head;
+        let next = null;
+
+        while (current !== null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        this.head = prev;
+        return this;
+    }
    
    
    /**
@@ -489,3 +502,12 @@ class ListNode {
    */
   removeNegatives() {}
 }
+
+const AdeebList = new SinglyLinkedList();
+AdeebList.insertAtBack(6);
+AdeebList.insertAtBack(5);
+AdeebList.insertAtBack(4);
+AdeebList.insertAtBack(3);
+AdeebList.insertAtBack(2);
+AdeebList.insertAtBack(1);
+console.log(AdeebList.reverse());
