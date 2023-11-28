@@ -8,7 +8,7 @@ var expected = 'sunnyside up eggsbiscuits and gravy';
 
 /**
  * Combine two given strings together with the smaller string being added
- * in the front. If they are the same length, the first string will be
+ * in the fron. If they are the same length, the first string will be
  * added to the front.
  * @returns {string} The combined strings.
  */
