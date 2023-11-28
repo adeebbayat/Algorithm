@@ -1,26 +1,29 @@
+s = 'aba'
+n = 10
 
-let steps = 8;
-let path = "UDDDUDUU";
 
-function countingValleys(steps, path) {
-    let elevation = 0;
-    let numberOfValleys = 0;
- 
-    for (let i = 0; i < path.length; i++){
-    
-        if(elevation === -1 && path[i] === "U"){
-            numberOfValleys++
-        }
-        if(path[i] === "D"){
-            elevation--;
-        }
-        if(path[i] === "U"){
-            elevation++;
-        }
-
+function repeatedString(s, n) {
+    if(s === 'a'){
+        return n
     }
-    return numberOfValleys
+    const infiniteString = [];
+    while(infiniteString.length < n){
+        for(let i = 0; i < s.length; i++){
+            infiniteString.push(s[i])
+            if(infiniteString.length === n){
+                break
+            }
+        }
+    }
+    const joinedString = infiniteString.join('')
+    let counter = 0;
+    for(let j = 0; j < joinedString.length; j++){
+        if(joinedString[j] === 'a'){
+            counter++
+        }
+    }
+    return counter
+
 }
 
-console.log(countingValleys(steps,path));
-console.log(1)
+console.log(repeatedString(s,n))
