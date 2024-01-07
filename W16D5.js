@@ -5,7 +5,7 @@ and the empty methods below the constructor.
 
 /**
  * A class to represent a doubly linked list and contain all of it's methods.
- * A doubly linked list is a singly linked list that can be traversed in both
+ * A doubly linked ist is a singly linked list that can be traversed in both
  * directions.
  */
 class DoublyLinkedList {
